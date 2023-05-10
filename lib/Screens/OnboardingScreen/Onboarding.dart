@@ -21,13 +21,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     OnboardingPage(
       title: 'Health Chech and consultation easily anywhere and anytime',
       image: NetworkImage(
-        'https://img.freepik.com/free-photo/young-female-doctor-looking-camera-office_1301-7808.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
+        'https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
       ),
     ),
     OnboardingPage(
       title: 'Lets stay healthy with Apiero Medica',
       image: NetworkImage(
-        ' https://img.freepik.com/free-photo/young-female-doctor-looking-camera-office_1301-7808.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
+        'https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
       ),
     ),
   ];
@@ -40,6 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           children: [
             Expanded(
+              flex: 3,
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: _pages.length,
@@ -53,25 +54,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
               ),
             ),
-            Column(
-              children: [
-                SmoothPageIndicator(
-                  controller: _pageController,
-                  count: _pages.length,
-                  effect: ExpandingDotsEffect(
-                    activeDotColor: Button,
-                    dotColor: TextColorGrey,
-                    dotHeight: 8,
-                    dotWidth: 8,
-                    spacing: 5,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  SmoothPageIndicator(
+                    controller: _pageController,
+                    count: _pages.length,
+                    effect: ExpandingDotsEffect(
+                      activeDotColor: Button,
+                      dotColor: TextColorGrey,
+                      dotHeight: 8,
+                      dotWidth: 8,
+                      spacing: 5,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: ElevatedButton(
                       onPressed: //if page is not last page, go to next page
                           _currentPage != _pages.length - 1
                               ? () {
@@ -104,18 +107,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                         ),
                         padding: MaterialStateProperty.all(
                           EdgeInsets.symmetric(
-                            horizontal: 50,
-                            vertical: 15,
+                            horizontal:
+                                MediaQuery.of(context).size.width * 0.35,
+                            vertical: MediaQuery.of(context).size.height * 0.02,
                           ),
                         ),
-                      )),
-                ),
-              ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -153,18 +159,14 @@ class OnboardingPage extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-          ),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: TextColorBlue,
-            ),
+        Text(
+          textDirection: TextDirection.ltr,
+          textAlign: TextAlign.center,
+          title,
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: TextColorBlue,
           ),
         ),
       ],
