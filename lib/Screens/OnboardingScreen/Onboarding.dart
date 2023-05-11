@@ -1,7 +1,23 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../Constants/Constants.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Onboarding Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: OnboardingScreen(),
+    );
+  }
+}
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -12,164 +28,136 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
   final List<Widget> _pages = [
-    OnboardingPage(
-      title: 'Thousands of doctors and experts to help your health',
-      image: NetworkImage(
-        'https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
-      ),
+    const OnboardingPage(
+      description: 'Thousands of doctors and experts to help your health',
+      animation: 'assets/Lottie/Onboard1.json',
     ),
-    OnboardingPage(
-      title: 'Health Chech and consultation easily anywhere and anytime',
-      image: NetworkImage(
-        'https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
-      ),
+    const OnboardingPage(
+      description: 'Health Chech and consultation easily anywhere and anytime',
+      animation: 'assets/Lottie/Onboard2.json',
     ),
-    OnboardingPage(
-      title: 'Lets stay healthy with Apiero Medica',
-      image: NetworkImage(
-        'https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg?size=626&ext=jpg&ga=GA1.2.835452490.1680197675&semt=sph',
-      ),
+    const OnboardingPage(
+      description: 'Lets stay healthy with Apiero Medica',
+      animation: 'assets/Lottie/Onboard3.json',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Bg,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 3,
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _pages.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _pages[index];
-                },
-                onPageChanged: (int page) {
-                  setState(() {
-                    _currentPage = page;
-                  });
-                },
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Expanded(
+            flex: 3,
+            child: PageView.builder(
+              controller: _pageController,
+              itemCount: _pages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return _pages[index];
+              },
+              onPageChanged: (int page) {
+                setState(() {
+                  _currentPage = page;
+                });
+              },
+            ),
+          ),
+          SmoothPageIndicator(
+            controller: _pageController,
+            count: _pages.length,
+            effect: const ExpandingDotsEffect(
+              activeDotColor: Button,
+              dotColor: Colors.grey,
+              dotHeight: 8,
+              dotWidth: 8,
+              spacing: 5,
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.07,
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: ElevatedButton(
+              onPressed: //if page is not last page, go to next page
+                  _currentPage != _pages.length - 1
+                      ? () {
+                          _pageController.nextPage(
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.ease,
+                          );
+                        }
+                      : //if page is last page, go to home screen
+                      () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OnboardingScreen(),
+                            ),
+                          );
+                        },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  Button,
+                ),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+              ),
+              child: Text(
+                _currentPage != _pages.length - 1 ? 'Next' : 'Get Started',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  SmoothPageIndicator(
-                    controller: _pageController,
-                    count: _pages.length,
-                    effect: ExpandingDotsEffect(
-                      activeDotColor: Button,
-                      dotColor: TextColorGrey,
-                      dotHeight: 8,
-                      dotWidth: 8,
-                      spacing: 5,
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: //if page is not last page, go to next page
-                          _currentPage != _pages.length - 1
-                              ? () {
-                                  _pageController.nextPage(
-                                    duration: Duration(milliseconds: 500),
-                                    curve: Curves.ease,
-                                  );
-                                }
-                              : //if page is last page, go to home screen
-                              () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => OnboardingScreen(),
-                                    ),
-                                  );
-                                },
-                      child: Text(
-                        _currentPage != _pages.length - 1
-                            ? 'Next'
-                            : 'Get Started',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          Button,
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        padding: MaterialStateProperty.all(
-                          EdgeInsets.symmetric(
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.35,
-                            vertical: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+        ],
       ),
     );
   }
 }
 
 class OnboardingPage extends StatelessWidget {
-  final String title;
-  final image;
+  final String description;
+  final String animation;
 
   const OnboardingPage({
     Key? key,
-    required this.title,
-    required this.image,
+    required this.description,
+    required this.animation,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.5,
-          width: MediaQuery.of(context).size.width * 0.8,
-          decoration: BoxDecoration(
-            color: Colors.green,
-            image: DecorationImage(
-              image: image is String ? NetworkImage(image) : image,
-              fit: BoxFit.cover,
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Lottie.asset(
+            animation,
+            height: MediaQuery.of(context).size.height * 0.5,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+          ),
+          Text(
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.center,
+            description,
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: TextColorBlue,
             ),
           ),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.02,
-        ),
-        Text(
-          textDirection: TextDirection.ltr,
-          textAlign: TextAlign.center,
-          title,
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: TextColorBlue,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
