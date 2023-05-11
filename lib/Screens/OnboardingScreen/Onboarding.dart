@@ -4,21 +4,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../Constants/Constants.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Onboarding Screen',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: OnboardingScreen(),
-    );
-  }
-}
-
 class OnboardingScreen extends StatefulWidget {
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
@@ -44,79 +29,83 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Expanded(
-            flex: 3,
-            child: PageView.builder(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [
+            Expanded(
+              flex: 3,
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: _pages.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _pages[index];
+                },
+                onPageChanged: (int page) {
+                  setState(() {
+                    _currentPage = page;
+                  });
+                },
+              ),
+            ),
+            SmoothPageIndicator(
               controller: _pageController,
-              itemCount: _pages.length,
-              itemBuilder: (BuildContext context, int index) {
-                return _pages[index];
-              },
-              onPageChanged: (int page) {
-                setState(() {
-                  _currentPage = page;
-                });
-              },
+              count: _pages.length,
+              effect: const ExpandingDotsEffect(
+                activeDotColor: Button,
+                dotColor: Colors.grey,
+                dotHeight: 8,
+                dotWidth: 8,
+                spacing: 5,
+              ),
             ),
-          ),
-          SmoothPageIndicator(
-            controller: _pageController,
-            count: _pages.length,
-            effect: const ExpandingDotsEffect(
-              activeDotColor: Button,
-              dotColor: Colors.grey,
-              dotHeight: 8,
-              dotWidth: 8,
-              spacing: 5,
-            ),
-          ),
-          SizedBox(height: 20),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.07,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: ElevatedButton(
-              onPressed: //if page is not last page, go to next page
-                  _currentPage != _pages.length - 1
-                      ? () {
-                          _pageController.nextPage(
-                            duration: Duration(milliseconds: 500),
-                            curve: Curves.ease,
-                          );
-                        }
-                      : //if page is last page, go to home screen
-                      () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => OnboardingScreen(),
-                            ),
-                          );
-                        },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  Button,
+            SizedBox(height: 20),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.07,
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: ElevatedButton(
+                onPressed: //if page is not last page, go to next page
+                    _currentPage != _pages.length - 1
+                        ? () {
+                            _pageController.nextPage(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.ease,
+                            );
+                          }
+                        : //if page is last page, go to home screen
+                        () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OnboardingScreen(),
+                              ),
+                            );
+                          },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Button,
+                  ),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
                 ),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                child: Text(
+                  _currentPage != _pages.length - 1 ? 'Next' : 'Get Started',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              child: Text(
-                _currentPage != _pages.length - 1 ? 'Next' : 'Get Started',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-        ],
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+          ],
+        ),
       ),
     );
   }
