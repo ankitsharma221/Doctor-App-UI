@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../Constants/Constants.dart';
+import '../LoginScreen/LoginScreen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -78,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => OnboardingScreen(),
+                                builder: (context) => LoginScreen(),
                               ),
                             );
                           },
