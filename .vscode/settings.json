@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/hp/OneDrive/Documents/ApieroMedica/linux"
+    "cmake.sourceDirectory": "C:/Users/hp/OneDrive/Documents/ApieroMedica/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
