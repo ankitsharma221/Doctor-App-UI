@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,6 +8,8 @@ import '../../Constants/Constants.dart';
 import '../LoginScreen/LoginScreen.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
@@ -53,16 +57,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             SmoothPageIndicator(
               controller: _pageController,
               count: _pages.length,
-              effect: const ExpandingDotsEffect(
-                activeDotColor: Button,
+              effect: ExpandingDotsEffect(
+                activeDotColor: Contstants().Button,
                 dotColor: Colors.grey,
                 dotHeight: 8,
                 dotWidth: 8,
                 spacing: 5,
               ),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.07,
               width: MediaQuery.of(context).size.width * 0.8,
               child: ElevatedButton(
@@ -70,7 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     _currentPage != _pages.length - 1
                         ? () {
                             _pageController.nextPage(
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               curve: Curves.ease,
                             );
                           }
@@ -79,13 +83,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
+                                builder: (context) => const LoginScreen(),
                               ),
                             );
                           },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    Button,
+                    Contstants().Button,
                   ),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
@@ -95,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 child: Text(
                   _currentPage != _pages.length - 1 ? 'Next' : 'Get Started',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -125,7 +129,7 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -143,7 +147,7 @@ class OnboardingPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold,
-              color: TextColorBlue,
+              color: Contstants().TextColorBlue,
             ),
           ),
         ],

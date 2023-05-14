@@ -1,4 +1,7 @@
+// ignore: file_names
+
 import 'package:apiero_medica/Constants/Constants.dart';
+import 'package:apiero_medica/Screens/Home_Screen/Home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -11,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController countryCode = TextEditingController();
+  @override
   void initState() {
     countryCode.text = "+91";
     super.initState();
@@ -19,23 +23,23 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Bg,
+      backgroundColor: Contstants().Bg,
       appBar: AppBar(
-          title: Text('Login Page'),
-          backgroundColor: Bg,
+          title: const Text('Login Page'),
+          backgroundColor: Contstants().Bg,
           elevation: 0.0,
           leading: const Icon(
             Icons.keyboard_backspace_sharp,
             color: Colors.black,
           )),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Padding(
+                const Padding(
                     padding: EdgeInsets.only(
                   top: 10,
                 )),
@@ -44,17 +48,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 230,
                   width: 230,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   'Lets you in!',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
 
@@ -83,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: countryCode,
                             keyboardType: TextInputType.number,
                             decoration:
-                                InputDecoration(border: InputBorder.none),
+                                const InputDecoration(border: InputBorder.none),
                           ),
                         ),
                         const Text(
@@ -117,14 +121,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 55,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => OtpPage()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const OtpPage()));
                     },
-                    child: Text('Send Otp'),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Button,
+                        backgroundColor: Contstants().Button,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
+                    child: const Text('Send Otp'),
                   ),
                 ),
 
@@ -134,8 +138,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Do not have account?'),
-                    Text('Sign up', style: TextStyle(color: Button))
+                    const Text('Do not have account?'),
+                    Text('Sign up',
+                        style: TextStyle(color: Contstants().Button))
                   ],
                 ),
               ],
@@ -164,11 +169,11 @@ class _OtpPageState extends State<OtpPage> {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => LoginScreen(),
+                builder: (context) => const LoginScreen(),
               ),
             );
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_rounded,
             color: Colors.black,
           ),
@@ -176,7 +181,7 @@ class _OtpPageState extends State<OtpPage> {
         elevation: 0,
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Center(
             child: Column(
@@ -203,19 +208,19 @@ class _OtpPageState extends State<OtpPage> {
                 ),
                 //text2
 
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
 
                 //textfield
 
-                Pinput(
+                const Pinput(
                   length: 6,
                   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                   showCursor: true,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
 
@@ -224,18 +229,23 @@ class _OtpPageState extends State<OtpPage> {
                   width: 280,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Verify Phone Number'),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Button,
+                        backgroundColor: Contstants().Button,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
+                    child: const Text('Verify Phone Number'),
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(
                     right: 130.0,
                   ),
