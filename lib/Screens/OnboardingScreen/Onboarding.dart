@@ -58,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               controller: _pageController,
               count: _pages.length,
               effect: ExpandingDotsEffect(
-                activeDotColor: Contstants().Button,
+                activeDotColor: Constants().Button,
                 dotColor: Colors.grey,
                 dotHeight: 8,
                 dotWidth: 8,
@@ -89,7 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    Contstants().Button,
+                    Constants().Button,
                   ),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
@@ -147,7 +147,7 @@ class OnboardingPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold,
-              color: Contstants().TextColorBlue,
+              color: Constants().TextColorBlue,
             ),
           ),
         ],

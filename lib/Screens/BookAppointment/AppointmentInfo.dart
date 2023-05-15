@@ -1,8 +1,9 @@
-import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../Constants/Constants.dart';
+
 class AppointmentInfo extends StatefulWidget {
-  const AppointmentInfo({super.key});
+  AppointmentInfo({super.key});
 
   @override
   State<AppointmentInfo> createState() => _AppointmentInfoState();
@@ -12,9 +13,9 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Bg,
+      backgroundColor: Constants().Bg,
       appBar: AppBar(
-          title: const Text(
+          title: Text(
             'Dr. John Doe',
             textAlign: TextAlign.start,
             style: TextStyle(
@@ -26,28 +27,29 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Icons.favorite_border_outlined,
                   color: Colors.black,
                   size: 30,
                 )),
           ],
-          backgroundColor: Bg,
+          backgroundColor: Constants().Bg,
           elevation: 0.0,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.keyboard_backspace_sharp,
                 color: Colors.black,
                 size: 30,
               ))),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
           children: [
-            Container(
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 1,
+              width: MediaQuery.of(context).size.width,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -55,7 +57,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.18,
                         width: MediaQuery.of(context).size.width,
@@ -66,8 +68,8 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                               color: Colors.grey.withOpacity(0.05),
                               spreadRadius: 0.5,
                               blurRadius: 0.5,
-                              offset: const Offset(
-                                  0, 2), // changes position of shadow
+                              offset:
+                                  Offset(0, 2), // changes position of shadow
                             ),
                           ],
                           borderRadius: BorderRadius.circular(10),
@@ -82,7 +84,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                 width: MediaQuery.of(context).size.width * 0.3,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  image: const DecorationImage(
+                                  image: DecorationImage(
                                     image: NetworkImage(
                                         'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg'),
                                     fit: BoxFit.cover,
@@ -100,7 +102,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                   Text(
                                     'Dr. John Doe',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Constants().TextColorBlack,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -118,14 +120,14 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                   Text(
                                     'Dentist',
                                     style: TextStyle(
-                                      color: TextColorGrey,
+                                      color: Constants().TextColorGrey,
                                       fontSize: 15,
                                     ),
                                   ),
                                   Text(
                                     'Experience: 5 years',
                                     style: TextStyle(
-                                      color: TextColorGrey,
+                                      color: Constants().TextColorGrey,
                                       fontSize: 15,
                                     ),
                                   ),
@@ -146,12 +148,12 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                           children: [
                             CircleAvatar(
                               radius: 30,
-                              backgroundColor: ContainerBg2,
+                              backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.people_alt_outlined,
-                                  color: Button,
+                                  color: Constants().Button,
                                   size: 30,
                                 ),
                               ),
@@ -159,10 +161,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               '5,000+',
                               style: TextStyle(
-                                color: TextColorBlue,
+                                color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -170,10 +172,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               'Patients',
                               style: TextStyle(
-                                color: TextColorGrey,
+                                color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
                             ),
@@ -183,12 +185,12 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                           children: [
                             CircleAvatar(
                               radius: 30,
-                              backgroundColor: ContainerBg2,
+                              backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.calendar_today_outlined,
-                                  color: Button,
+                                  color: Constants().Button,
                                   size: 30,
                                 ),
                               ),
@@ -196,10 +198,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               '5 years',
                               style: TextStyle(
-                                color: TextColorBlue,
+                                color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -207,10 +209,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               'Experience',
                               style: TextStyle(
-                                color: TextColorGrey,
+                                color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
                             ),
@@ -220,12 +222,12 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                           children: [
                             CircleAvatar(
                               radius: 30,
-                              backgroundColor: ContainerBg2,
+                              backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.star_half_outlined,
-                                  color: Button,
+                                  color: Constants().Button,
                                   size: 30,
                                 ),
                               ),
@@ -233,10 +235,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               '4.5',
                               style: TextStyle(
-                                color: TextColorBlue,
+                                color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -244,10 +246,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               'Rating',
                               style: TextStyle(
-                                color: TextColorGrey,
+                                color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
                             ),
@@ -257,12 +259,12 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                           children: [
                             CircleAvatar(
                               radius: 30,
-                              backgroundColor: ContainerBg2,
+                              backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.chat_outlined,
-                                  color: Button,
+                                  color: Constants().Button,
                                   size: 30,
                                 ),
                               ),
@@ -270,10 +272,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               '5,000+',
                               style: TextStyle(
-                                color: TextColorBlue,
+                                color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -281,10 +283,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
-                            const Text(
+                            Text(
                               'Reviews',
                               style: TextStyle(
-                                color: TextColorGrey,
+                                color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
                             ),
@@ -295,7 +297,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
-                    const ListTile(
+                    ListTile(
                       title: Padding(
                         padding: EdgeInsets.only(
                           bottom: 8.0,
@@ -303,7 +305,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                         child: Text(
                           'About Doctor',
                           style: TextStyle(
-                            color: TextColorBlack,
+                            color: Constants().TextColorBlack,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -313,7 +315,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       subtitle: Text(
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         style: TextStyle(
-                          color: TextColorGrey,
+                          color: Constants().TextColorGrey,
                           fontSize: 15,
                         ),
                       ),
@@ -321,7 +323,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
-                    const ListTile(
+                    ListTile(
                       title: Padding(
                         padding: EdgeInsets.only(
                           bottom: 8.0,
@@ -329,7 +331,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                         child: Text(
                           'Working Hours',
                           style: TextStyle(
-                            color: TextColorBlack,
+                            color: Constants().TextColorBlack,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -338,7 +340,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       subtitle: Text(
                         'Mon - Fri 9:00 AM - 5:00 PM\nSat - Sun 9:00 AM - 1:00 PM',
                         style: TextStyle(
-                          color: TextColorGrey,
+                          color: Constants().TextColorGrey,
                           fontSize: 15,
                         ),
                       ),
@@ -346,34 +348,71 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
+                    ListTile(
+                      //review section
+                      title: Padding(
+                        padding: EdgeInsets.only(
+                          bottom: 8.0,
+                        ),
+                        child: Text(
+                          'Reviews',
+                          style: TextStyle(
+                            color: Constants().TextColorBlack,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      trailing: Text(
+                        'View All',
+                        style: TextStyle(
+                          color: Constants().TextColorBlue,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    //review card
+                    ReviewCard(
+                      name: 'John Doe',
+                      review:
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                      date: '5 days ago',
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
                   ],
                 ),
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.12,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: ContainerBg2,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  topRight: Radius.circular(25),
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Button,
-                    borderRadius: BorderRadius.circular(30),
+            Positioned(
+              bottom: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.12,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Constants().ContainerBg2,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25),
                   ),
-                  child: Center(
-                    child: Text(
-                      'Book Appointment',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Constants().Button,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Book Appointment',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -383,6 +422,143 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
           ],
         ),
       ),
+    );
+  }
+}
+
+// review card class for review section
+class ReviewCard extends StatelessWidget {
+  const ReviewCard({
+    Key? key,
+    required this.review,
+    required this.name,
+    required this.date,
+  }) : super(key: key);
+
+  final String review;
+  final String name;
+  final String date;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 5,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height * 0.02,
+            right: MediaQuery.of(context).size.width * 0.02,
+            left: MediaQuery.of(context).size.width * 0.02,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: NetworkImage(
+                      'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg',
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.02,
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.32,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.04,
+                    width: MediaQuery.of(context).size.width * 0.15,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: Constants().Button,
+                        width: 2,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Constants().Button,
+                          size: 15,
+                        ),
+                        Text(
+                          '5',
+                          style: TextStyle(
+                            color: Constants().Button,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  CircleAvatar(
+                    radius: 12,
+                    backgroundImage: AssetImage(
+                      'assets/Icons/more.png',
+                    ),
+                    backgroundColor: Colors.transparent,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Text(
+                review,
+                style: TextStyle(
+                  color: Constants().TextColorBlack,
+                  fontSize: 15,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.thumb_up_alt_outlined,
+                      color: Constants().Button,
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.02,
+                  ),
+                  Text(
+                    'Like',
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

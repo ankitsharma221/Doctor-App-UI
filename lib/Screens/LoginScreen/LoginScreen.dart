@@ -1,9 +1,11 @@
 // ignore: file_names
 
 import 'package:apiero_medica/Constants/Constants.dart';
-import 'package:apiero_medica/Screens/Home_Screen/Home_screen.dart';
+import 'package:apiero_medica/Screens/BottomNav/BottomNav.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+
+import '../HomeScreen/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,10 +25,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Contstants().Bg,
+      backgroundColor: Constants().Bg,
       appBar: AppBar(
           title: const Text('Login Page'),
-          backgroundColor: Contstants().Bg,
+          backgroundColor: Constants().Bg,
           elevation: 0.0,
           leading: const Icon(
             Icons.keyboard_backspace_sharp,
@@ -125,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (context) => const OtpPage()));
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Contstants().Button,
+                        backgroundColor: Constants().Button,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     child: const Text('Send Otp'),
@@ -139,8 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Do not have account?'),
-                    Text('Sign up',
-                        style: TextStyle(color: Contstants().Button))
+                    Text('Sign up', style: TextStyle(color: Constants().Button))
                   ],
                 ),
               ],
@@ -230,13 +231,12 @@ class _OtpPageState extends State<OtpPage> {
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const BottomNav(),
+                      ));
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Contstants().Button,
+                        backgroundColor: Constants().Button,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     child: const Text('Verify Phone Number'),
