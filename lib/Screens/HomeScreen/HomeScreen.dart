@@ -1,8 +1,8 @@
-import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:apiero_medica/Constants/Constants.dart';
 import '../../Utils/Search.dart';
 import '../NotificationScreen/Notification.dart';
 
@@ -20,22 +20,22 @@ class _HomeScreenState extends State<HomeScreen> {
     'Dentist',
     'Cardiologist',
     'Dermatology',
-    'Gynecologist',
+    'Ophthalmol..',
     'Neurologist',
     'Pediatrician',
     'More',
   ];
 
-  //icons path
+  // svg path for icons
   List<String> icons = [
-    'assets/Icons/eye.png',
-    'assets/Icons/eye.png',
-    'assets/Icons/cardiology.png',
-    'assets/Icons/darmatology.png',
-    'assets/Icons/eye.png',
-    'assets/Icons/neurologist.png',
-    'assets/Icons/eye.png',
-    'assets/Icons/eye.png',
+    'assets/Icons/Categories/doctors.png',
+    'assets/Icons/Categories/tooth.png',
+    'assets/Icons/Categories/cardiology.png',
+    'assets/Icons/Categories/darmatology.png',
+    'assets/Icons/Categories/eye.png',
+    'assets/Icons/Categories/neurologist.png',
+    'assets/Icons/Categories/baby.png',
+    'assets/Icons/Categories/more-blue.png',
   ];
 
   @override
@@ -95,18 +95,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       },
-                      icon: Icon(
-                        size: 30,
-                        Icons.notifications_none_outlined,
-                        color: Constants().TextColorBlack,
+                      icon: SvgPicture.asset(
+                        'assets/Icons/notification.svg',
+                        height: 25,
+                        width: 25,
                       ),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(
-                        size: 30,
-                        Icons.favorite_border_outlined,
-                        color: Constants().TextColorBlack,
+                      icon: SvgPicture.asset(
+                        'assets/Icons/heart.svg',
+                        height: 25,
+                        width: 25,
                       ),
                     )
                   ],
@@ -130,9 +130,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.02,
                       ),
-                      Icon(
-                        Icons.search,
-                        color: Constants().TextColorGrey,
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          'assets/Icons/search.svg',
+                          height: 25,
+                          width: 25,
+                        ),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.02,
@@ -152,10 +156,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
-                      ),
-                      Icon(
-                        Icons.filter_list_outlined,
-                        color: Constants().TextColorGrey,
                       ),
                     ],
                   ),
@@ -223,9 +223,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               backgroundColor: Constants().ContainerBg2,
                               child: Image.asset(
                                 icons[index],
-                                height: 30,
-                                width: 30,
-                              ),
+                                height: 25,
+                                width: 25,
+                              ), // image
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.01,

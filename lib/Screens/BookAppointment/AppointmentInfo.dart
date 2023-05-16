@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:unicons/unicons.dart';
 
 import '../../Constants/Constants.dart';
 
@@ -15,35 +18,39 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
     return Scaffold(
       backgroundColor: Constants().Bg,
       appBar: AppBar(
-          title: Text(
-            'Dr. John Doe',
-            textAlign: TextAlign.start,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
+        title: Text(
+          'Dr. John Doe',
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontFamily: 'Urbanist',
+            color: Colors.black,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/Icons/heart.svg',
+              height: 30,
+              width: 30,
             ),
           ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.favorite_border_outlined,
-                  color: Colors.black,
-                  size: 30,
-                )),
-          ],
-          backgroundColor: Constants().Bg,
-          elevation: 0.0,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.keyboard_backspace_sharp,
-                color: Colors.black,
-                size: 30,
-              ))),
+        ],
+        backgroundColor: Constants().Bg,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.keyboard_backspace_sharp,
+            color: Colors.black,
+            size: 30,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -102,9 +109,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                   Text(
                                     'Dr. John Doe',
                                     style: TextStyle(
+                                      fontFamily: 'Urbanist',
                                       color: Constants().TextColorBlack,
                                       fontSize: 20,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Container(
@@ -120,6 +128,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                   Text(
                                     'Dentist',
                                     style: TextStyle(
+                                      fontFamily: 'Urbanist',
                                       color: Constants().TextColorGrey,
                                       fontSize: 15,
                                     ),
@@ -127,6 +136,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                   Text(
                                     'Experience: 5 years',
                                     style: TextStyle(
+                                      fontFamily: 'Urbanist',
                                       color: Constants().TextColorGrey,
                                       fontSize: 15,
                                     ),
@@ -151,10 +161,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                               backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: Icon(
-                                  Icons.people_alt_outlined,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.users,
                                   color: Constants().Button,
-                                  size: 30,
+                                  size: 20,
                                 ),
                               ),
                             ),
@@ -164,6 +174,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               '5,000+',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -175,6 +186,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               'Patients',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
@@ -189,9 +201,8 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                               child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: Constants().Button,
-                                  size: 30,
+                                  UniconsLine.calendar_alt,
+                                  size: 25,
                                 ),
                               ),
                             ),
@@ -201,6 +212,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               '5 years',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -212,6 +224,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               'Experience',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
@@ -225,10 +238,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                               backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: Icon(
-                                  Icons.star_half_outlined,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.starHalfAlt,
                                   color: Constants().Button,
-                                  size: 30,
+                                  size: 20,
                                 ),
                               ),
                             ),
@@ -238,6 +251,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               '4.5',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -249,6 +263,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               'Rating',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
@@ -262,10 +277,10 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                               backgroundColor: Constants().ContainerBg2,
                               child: IconButton(
                                 onPressed: () {},
-                                icon: Icon(
-                                  Icons.chat_outlined,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.solidCommentDots,
                                   color: Constants().Button,
-                                  size: 30,
+                                  size: 25,
                                 ),
                               ),
                             ),
@@ -275,6 +290,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               '5,000+',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorBlue,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -286,6 +302,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                             Text(
                               'Reviews',
                               style: TextStyle(
+                                fontFamily: 'Urbanist',
                                 color: Constants().TextColorGrey,
                                 fontSize: 10,
                               ),
@@ -305,6 +322,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                         child: Text(
                           'About Doctor',
                           style: TextStyle(
+                            fontFamily: 'Urbanist',
                             color: Constants().TextColorBlack,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -315,6 +333,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       subtitle: Text(
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         style: TextStyle(
+                          fontFamily: 'Urbanist',
                           color: Constants().TextColorGrey,
                           fontSize: 15,
                         ),
@@ -331,6 +350,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                         child: Text(
                           'Working Hours',
                           style: TextStyle(
+                            fontFamily: 'Urbanist',
                             color: Constants().TextColorBlack,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -340,6 +360,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       subtitle: Text(
                         'Mon - Fri 9:00 AM - 5:00 PM\nSat - Sun 9:00 AM - 1:00 PM',
                         style: TextStyle(
+                          fontFamily: 'Urbanist',
                           color: Constants().TextColorGrey,
                           fontSize: 15,
                         ),
@@ -357,6 +378,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                         child: Text(
                           'Reviews',
                           style: TextStyle(
+                            fontFamily: 'Urbanist',
                             color: Constants().TextColorBlack,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -366,6 +388,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       trailing: Text(
                         'View All',
                         style: TextStyle(
+                          fontFamily: 'Urbanist',
                           color: Constants().TextColorBlue,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -409,6 +432,7 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                       child: Text(
                         'Book Appointment',
                         style: TextStyle(
+                          fontFamily: 'Urbanist',
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -473,6 +497,7 @@ class ReviewCard extends StatelessWidget {
                   Text(
                     name,
                     style: TextStyle(
+                      fontFamily: 'Urbanist',
                       color: Constants().TextColorBlack,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -503,6 +528,7 @@ class ReviewCard extends StatelessWidget {
                         Text(
                           '5',
                           style: TextStyle(
+                            fontFamily: 'Urbanist',
                             color: Constants().Button,
                           ),
                         ),
@@ -525,6 +551,7 @@ class ReviewCard extends StatelessWidget {
               Text(
                 review,
                 style: TextStyle(
+                  fontFamily: 'Urbanist',
                   color: Constants().TextColorBlack,
                   fontSize: 15,
                 ),
@@ -548,6 +575,7 @@ class ReviewCard extends StatelessWidget {
                   Text(
                     'Like',
                     style: TextStyle(
+                      fontFamily: 'Urbanist',
                       color: Constants().TextColorBlack,
                       fontWeight: FontWeight.bold,
                       fontSize: 15,

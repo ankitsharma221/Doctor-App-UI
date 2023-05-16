@@ -33,6 +33,8 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   lottie: ^2.3.2
   pinput: ^2.2.31
+  flutter_svg: ^2.0.5
+  unicons: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +64,7 @@ flutter:
     - assets/Images/
     - assets/Lottie/
     - assets/Icons/
+    - assets/Icons/Categories/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -75,11 +78,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/Fonts/Urbanist/Urbanist-Regular.ttf
+        - asset: assets/Fonts/Urbanist/Urbanist-Bold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
