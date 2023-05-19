@@ -3,6 +3,7 @@
 import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:apiero_medica/Screens/BottomNav/BottomNav.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 
 import '../HomeScreen/HomeScreen.dart';
@@ -27,13 +28,18 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Constants().Bg,
       appBar: AppBar(
-          title: const Text('Login Page'),
-          backgroundColor: Constants().Bg,
-          elevation: 0.0,
-          leading: const Icon(
-            Icons.keyboard_backspace_sharp,
+        backgroundColor: Constants().Bg,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
             color: Colors.black,
-          )),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -42,16 +48,16 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 const Padding(
-                    padding: EdgeInsets.only(
-                  top: 10,
-                )),
-                Image.asset(
-                  'assets/Images/LoginScreen.png',
-                  height: 230,
-                  width: 230,
+                  padding: EdgeInsets.all(5.0),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: MediaQuery.of(context).size.width,
+                  child: Lottie.asset(
+                    'assets/Lottie/login.json',
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                  ),
                 ),
                 const Text(
                   'Lets you in!',
@@ -65,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 const Text(
-                  'We need to register your phone before getting started!',
+                  'Login with your phone number to get started',
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
@@ -140,8 +146,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Do not have account?'),
-                    Text('Sign up', style: TextStyle(color: Constants().Button))
+                    const Text(
+                      'Do not have account? ',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      'Register',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Constants().Button,
+                      ),
+                    )
                   ],
                 ),
               ],

@@ -1,16 +1,20 @@
 import 'package:apiero_medica/Constants/Constants.dart';
+import 'package:apiero_medica/Screens/Appointment/AppointmentScreen.dart';
+import 'package:apiero_medica/Screens/Appointment/BookAppointment.dart';
+import 'package:apiero_medica/Screens/ArticlesScreen/ArticlesScreen.dart';
+// ignore: unused_import
 import 'package:apiero_medica/Screens/FavoriteDoctor/FavoriteDoctor.dart';
 import 'package:apiero_medica/Screens/HomeScreen/HomeScreen.dart';
-import 'package:apiero_medica/Screens/NotificationScreen/Notification.dart';
-import 'package:flutter/foundation.dart';
+import 'package:apiero_medica/Screens/ProfileScreen/ProfileScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unicons/unicons.dart';
-import '../BookAppointment/AppointmentInfo.dart';
+
+import '../Appointment/AppointmentInfo.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
+  static String id = 'BottomNav';
 
   @override
   State<BottomNav> createState() => _BottomNavState();
@@ -20,10 +24,10 @@ class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     HomeScreen(),
+    AppointmentScreen(),
     AppointmentInfo(),
-    NotificationScreen(),
-    FavoriteDoctor(),
-    HomeScreen(),
+    ArticlesScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -35,6 +39,18 @@ class _BottomNavState extends State<BottomNav> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Constants().White,
         elevation: 0,
+        selectedLabelStyle: TextStyle(
+          color: Constants().Button,
+          fontFamily: 'Urbanist',
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: Colors.grey[700],
+          fontFamily: 'Urbanist',
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
         selectedFontSize: 13,
         unselectedFontSize: 12,
         selectedIconTheme: IconThemeData(

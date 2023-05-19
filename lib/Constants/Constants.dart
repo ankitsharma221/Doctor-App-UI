@@ -15,4 +15,5 @@ class Constants {
   Color TextColorGrey = const Color(0xFFa8a7a7);
   Color TextColorWhite = const Color(0xFFFFFFFF);
   Color White = const Color(0xFFFFFFFF);
+  Color Con = const Color(0xFFfafafa);
 }

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unicons/unicons.dart';
 
 import '../../Constants/Constants.dart';
+import 'BookAppointment.dart';
 
 class AppointmentInfo extends StatefulWidget {
   AppointmentInfo({super.key});
@@ -423,19 +424,29 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(15.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Constants().Button,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Book Appointment',
-                        style: TextStyle(
-                          fontFamily: 'Urbanist',
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookAppointment(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Constants().Button,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Book Appointment',
+                          style: TextStyle(
+                            fontFamily: 'Urbanist',
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

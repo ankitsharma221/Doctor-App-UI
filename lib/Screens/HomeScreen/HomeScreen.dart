@@ -1,10 +1,12 @@
+import 'package:apiero_medica/Screens/FavoriteDoctor/FavoriteDoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:apiero_medica/Constants/Constants.dart';
 import '../../Utils/Search.dart';
-import '../NotificationScreen/Notification.dart';
+import '../NotificationScreen/NotificationScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/Icons/Categories/cardiology.png',
     'assets/Icons/Categories/darmatology.png',
     'assets/Icons/Categories/eye.png',
-    'assets/Icons/Categories/neurologist.png',
+    'assets/Icons/Categories/neurology.png',
     'assets/Icons/Categories/baby.png',
     'assets/Icons/Categories/more-blue.png',
   ];
@@ -42,6 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants().Bg,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Lottie.asset(
+          'assets/Lottie/chat-bot.json',
+          repeat: true,
+          height: 100,
+          width: 100,
+          alignment: Alignment.center,
+        ),
+        backgroundColor: Constants().Button,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -57,8 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     const CircleAvatar(
                       radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg'),
+                      backgroundImage: AssetImage('assets/Images/doctor2.jpg'),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           'Good Morning 👋',
                           style: TextStyle(
+                            fontFamily: 'Urbanist',
                             fontSize: 13,
                             color: Constants().TextColorGrey,
                           ),
@@ -76,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           'Andrew Smith',
                           style: TextStyle(
+                            fontFamily: 'Urbanist',
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Constants().TextColorBlack,
@@ -102,7 +116,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FavoriteDoctor(),
+                          ),
+                        );
+                      },
                       icon: SvgPicture.asset(
                         'assets/Icons/heart.svg',
                         height: 25,
@@ -125,39 +146,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Constants().White,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.02,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
+                  child: GestureDetector(
+                    onTap: () {
+                      Provider.of<Search>(context, listen: false)
+                          .search(context);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.05,
+                        ),
+                        SvgPicture.asset(
                           'assets/Icons/search.svg',
                           height: 25,
                           width: 25,
                         ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.02,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Provider.of<Search>(context, listen: false)
-                              .search(context);
-                        },
-                        child: Text(
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.05,
+                        ),
+                        Text(
                           'Search',
                           style: TextStyle(
                             fontSize: 15,
                             color: Constants().TextColorGrey,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.5,
-                      ),
-                    ],
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -180,6 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     'Categories',
                     style: TextStyle(
+                      fontFamily: 'Urbanist',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Constants().TextColorBlack,
@@ -192,6 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     'See All',
                     style: TextStyle(
                       fontSize: 15,
+                      fontFamily: 'Urbanist',
                       fontWeight: FontWeight.bold,
                       color: Constants().TextColorBlue,
                     ),
@@ -223,8 +244,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               backgroundColor: Constants().ContainerBg2,
                               child: Image.asset(
                                 icons[index],
-                                height: 25,
-                                width: 25,
+                                height: 30,
+                                width: 30,
                               ), // image
                             ),
                             SizedBox(
@@ -234,6 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               categories[index],
                               style: TextStyle(
                                 fontSize: 10,
+                                fontFamily: 'Urbanist',
                                 fontWeight: FontWeight.bold,
                                 color: Constants().TextColorBlack,
                               ),
@@ -301,9 +323,7 @@ class _CardSliderState extends State<CardSlider> {
                     color: Colors.transparent,
                     image: const DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(
-                        'https://w0.peakpx.com/wallpaper/957/184/HD-wallpaper-blue-background-gradient-geometric-shapes-pointer-abstract.jpg',
-                      ),
+                      image: AssetImage('assets/Images/card.jpg'),
                     ),
                   ),
                   child: Row(
