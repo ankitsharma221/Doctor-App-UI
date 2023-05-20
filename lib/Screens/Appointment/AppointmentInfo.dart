@@ -93,8 +93,8 @@ class _AppointmentInfoState extends State<AppointmentInfo> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg'),
+                                    image:
+                                        AssetImage('assets/Images/doctor2.jpg'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -498,9 +498,7 @@ class ReviewCard extends StatelessWidget {
                   CircleAvatar(
                     radius: 25,
                     backgroundColor: Colors.transparent,
-                    backgroundImage: NetworkImage(
-                      'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg',
-                    ),
+                    backgroundImage: AssetImage('assets/Images/doctor2.jpg'),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.02,
