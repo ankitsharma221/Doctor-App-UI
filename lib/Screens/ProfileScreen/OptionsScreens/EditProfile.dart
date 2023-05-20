@@ -20,9 +20,13 @@ class _EditState extends State<Edit> {
         backgroundColor: Constants().Bg,
         title: Text(
           'Edit Profile',
-          style: TextStyle(color: Constants().TextColorBlack),
+          style: TextStyle(
+            color: Constants().TextColorBlack,
+            fontFamily: 'Urbanist',
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
         ),
-        automaticallyImplyLeading: true,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -57,7 +61,7 @@ class _EditState extends State<Edit> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(
-                          color: Constants().White,
+                          color: Constants().Bg,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(

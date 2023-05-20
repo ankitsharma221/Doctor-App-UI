@@ -44,17 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants().Bg,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Lottie.asset(
-          'assets/Lottie/chat-bot.json',
-          repeat: true,
-          height: 100,
-          width: 100,
-          alignment: Alignment.center,
-        ),
-        backgroundColor: Constants().Button,
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: Lottie.asset(
+      //     'assets/Lottie/chat-bot.json',
+      //     repeat: true,
+      //     height: 100,
+      //     width: 100,
+      //     alignment: Alignment.center,
+      //   ),
+      //   backgroundColor: Constants().Button,
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

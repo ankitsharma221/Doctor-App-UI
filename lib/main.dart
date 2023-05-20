@@ -1,4 +1,5 @@
 import 'package:apiero_medica/Screens/bottomNav/BottomNav.dart';
+import 'package:apiero_medica/Utils/Dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Search()),
+        ChangeNotifierProvider(create: (context) => DialogBox()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+        home: BottomNav(),
       ),
     );
   }

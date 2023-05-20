@@ -1,8 +1,13 @@
 import 'package:apiero_medica/Constants/Constants.dart';
+import 'package:apiero_medica/Screens/BottomNav/BottomNav.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:time_range/time_range.dart';
+
+import '../../Utils/Dialog.dart';
 
 class BookAppointment extends StatefulWidget {
   const BookAppointment({super.key});
@@ -114,46 +119,54 @@ class _BookAppointmentState extends State<BookAppointment> {
                   style: TextStyle(
                     fontFamily: 'Urbanist',
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.38,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: Constants().ContainerBg2,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(
+                      top: 5,
+                      left: 5,
+                      right: 5,
+                      bottom: 5,
+                    ),
                     child: SfDateRangePicker(
                       // show year
                       showNavigationArrow: true,
+                      // show navigation arrow
+                      enablePastDates: false,
+                      // enable past dates
                       headerStyle: DateRangePickerHeaderStyle(
                         textAlign: TextAlign.center,
                         textStyle: TextStyle(
                           fontFamily: 'Urbanist',
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       // text style
                       selectionTextStyle: TextStyle(
                         fontFamily: 'Urbanist',
-                        color: Colors.black,
-                        fontSize: 18,
+                        color: Colors.white,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
                       yearCellStyle: DateRangePickerYearCellStyle(
                         textStyle: TextStyle(
                           fontFamily: 'Urbanist',
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -161,7 +174,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                         textStyle: TextStyle(
                           fontFamily: 'Urbanist',
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 16,
                         ),
                       ),
                       monthViewSettings: DateRangePickerMonthViewSettings(
@@ -169,7 +182,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                           textStyle: TextStyle(
                             fontFamily: 'Urbanist',
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -190,7 +203,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                   style: TextStyle(
                     fontFamily: 'Urbanist',
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -200,11 +213,12 @@ class _BookAppointmentState extends State<BookAppointment> {
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 10,
+                  itemCount: 12,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
+                    childAspectRatio: 2.2,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
@@ -217,10 +231,10 @@ class _BookAppointmentState extends State<BookAppointment> {
                         height: 70,
                         width: 50,
                         decoration: BoxDecoration(
-                          color: Constants().ContainerBg2,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(
                             color: Constants().Button,
+                            width: 2,
                           ),
                         ),
                         child: Center(
@@ -228,8 +242,8 @@ class _BookAppointmentState extends State<BookAppointment> {
                             "10:00 AM",
                             style: TextStyle(
                               fontFamily: 'Urbanist',
-                              color: Colors.black,
-                              fontSize: 18,
+                              color: Constants().Button,
+                              fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -237,32 +251,55 @@ class _BookAppointmentState extends State<BookAppointment> {
                       ),
                     );
                   },
-                )
-                // TimeRange(
-                //   titlePadding: 20,
-                //   minimalTimeRange: 30,
-                //   textStyle: TextStyle(
-                //     fontFamily: 'Urbanist',
-                //     color: Colors.black,
-                //     fontSize: 18,
-                //     fontWeight: FontWeight.w600,
-                //   ),
-                //   activeTextStyle: TextStyle(
-                //     fontFamily: 'Urbanist',
-                //     color: Colors.white,
-                //     fontSize: 18,
-                //     fontWeight: FontWeight.w600,
-                //   ),
-                //   borderColor: Constants().Button,
-                //   activeBorderColor: Constants().TextColorBlack,
-                //   backgroundColor: Constants().ContainerBg2,
-                //   activeBackgroundColor: Constants().Button,
-                //   firstTime: TimeOfDay(hour: 9, minute: 0),
-                //   lastTime: TimeOfDay(hour: 20, minute: 0),
-                //   timeStep: 30,
-                //   timeBlock: 30,
-                //   onRangeCompleted: (range) => print(range),
-                // )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                    onPressed: //if page is not last page, go to next page
+                        () {
+                      Provider.of<DialogBox>(context, listen: false).dialog(
+                        context,
+                        "assets/Images/Booked.png",
+                        "Congratulations!",
+                        "Your appointment has been booked successfully.",
+                        "View Appointment",
+                        "Cancel",
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BottomNav(),
+                            ),
+                          );
+                        },
+                        () {
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        Constants().Button,
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      'Submit',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
