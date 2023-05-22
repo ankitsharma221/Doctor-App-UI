@@ -1,21 +1,21 @@
-import 'package:apiero_medica/Screens/FavoriteDoctor/FavoriteDoctor.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/FavoriteDoctor/FavoriteDoctor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:apiero_medica/Constants/Constants.dart';
-import '../../Utils/Search.dart';
+import '../../../Utils/Search.dart';
 import '../NotificationScreen/NotificationScreen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreenPaitent extends StatefulWidget {
+  const HomeScreenPaitent({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenPaitent> createState() => _HomeScreenPaitentState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenPaitentState extends State<HomeScreenPaitent> {
   // Items and Icons in Categories
   List<String> categories = [
     'All',

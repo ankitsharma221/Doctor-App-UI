@@ -1,8 +1,8 @@
 import 'package:apiero_medica/Constants/Constants.dart';
-import 'package:apiero_medica/Screens/ProfileScreen/OptionsScreens/EditProfile.dart';
-import 'package:apiero_medica/Screens/ProfileScreen/OptionsScreens/Language.dart';
-import 'package:apiero_medica/Screens/ProfileScreen/OptionsScreens/Notification.dart';
-import 'package:apiero_medica/Screens/ProfileScreen/OptionsScreens/Security.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/ProfileScreen/OptionsScreens/EditProfile.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/ProfileScreen/OptionsScreens/Language.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/ProfileScreen/OptionsScreens/Notification.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/ProfileScreen/OptionsScreens/Security.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';

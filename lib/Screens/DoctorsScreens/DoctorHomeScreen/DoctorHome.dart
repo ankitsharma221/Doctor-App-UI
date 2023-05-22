@@ -1,11 +1,221 @@
-import 'package:apiero_medica/Constants/Constants.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/FavoriteDoctor/FavoriteDoctor.dart';
+import 'package:apiero_medica/Utils/DoctorCard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:apiero_medica/Constants/Constants.dart';
+import '../../../Utils/Search.dart';
+import '../../BottomNav/BottomNavPaitents.dart';
+import '../../PaitentsScrens/NotificationScreen/NotificationScreen.dart';
 
-import '../Screens/BottomNav/BottomNavPaitents.dart';
+class HomeScreenDoctor extends StatefulWidget {
+  const HomeScreenDoctor({super.key});
 
-class AppointmentCard extends StatefulWidget {
-  const AppointmentCard({
+  @override
+  State<HomeScreenDoctor> createState() => _HomeScreenDoctorState();
+}
+
+class _HomeScreenDoctorState extends State<HomeScreenDoctor> {
+  // Items and Icons in Categories
+  List<String> categories = [
+    'All',
+    'Dentist',
+    'Cardiologist',
+    'Dermatology',
+    'Ophthalmol..',
+    'Neurologist',
+    'Pediatrician',
+    'More',
+  ];
+
+  // svg path for icons
+  List<String> icons = [
+    'assets/Icons/Categories/doctors.png',
+    'assets/Icons/Categories/tooth.png',
+    'assets/Icons/Categories/cardiology.png',
+    'assets/Icons/Categories/darmatology.png',
+    'assets/Icons/Categories/eye.png',
+    'assets/Icons/Categories/neurology.png',
+    'assets/Icons/Categories/baby.png',
+    'assets/Icons/Categories/more-blue.png',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Constants().Bg,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Lottie.asset(
+          'assets/Lottie/chat-bot.json',
+          repeat: true,
+          height: 100,
+          width: 100,
+          alignment: Alignment.center,
+        ),
+        backgroundColor: Constants().Button,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/Images/doctor2.jpg'),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Good Morning 👋',
+                          style: TextStyle(
+                            fontFamily: 'Urbanist',
+                            fontSize: 13,
+                            color: Constants().TextColorGrey,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.008,
+                        ),
+                        Text(
+                          'Andrew Smith',
+                          style: TextStyle(
+                            fontFamily: 'Urbanist',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Constants().TextColorBlack,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.1,
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NotificationScreen(),
+                          ),
+                        );
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/Icons/notification.svg',
+                        height: 25,
+                        width: 25,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  // search bar
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  decoration: BoxDecoration(
+                    color: Constants().White,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Provider.of<Search>(context, listen: false)
+                          .search(context);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.05,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Icons/search.svg',
+                          height: 25,
+                          width: 25,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.05,
+                        ),
+                        Text(
+                          'Search',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Constants().TextColorGrey,
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              ListTile(
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Text(
+                    "Today's Appointments",
+                    style: TextStyle(
+                      fontFamily: 'Urbanist',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Constants().TextColorBlack,
+                    ),
+                  ),
+                ),
+                trailing: Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Urbanist',
+                      fontWeight: FontWeight.bold,
+                      color: Constants().TextColorBlue,
+                    ),
+                  ),
+                ),
+              ),
+              AppointmentCardToday(
+                name: 'Dr. Stefeni Albert',
+                date: 'Mon, 18 May',
+                time: '8.00 - 9.00 AM',
+                status: 'Cancelled',
+                color: Constants().TextColorGrey,
+                button: 'Book Again',
+                button2: 'Review',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AppointmentCardToday extends StatefulWidget {
+  const AppointmentCardToday({
     Key? key,
     this.name,
     this.image,
@@ -21,10 +231,10 @@ class AppointmentCard extends StatefulWidget {
   final Color? color;
 
   @override
-  State<AppointmentCard> createState() => _AppointmentCardState();
+  State<AppointmentCardToday> createState() => _AppointmentCardTodayState();
 }
 
-class _AppointmentCardState extends State<AppointmentCard> {
+class _AppointmentCardTodayState extends State<AppointmentCardToday> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -88,19 +298,6 @@ class _AppointmentCardState extends State<AppointmentCard> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      widget.date!,
-                                      style: TextStyle(
-                                        fontFamily: 'Urbanist',
-                                        color: Constants().TextColorGrey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.01,
-                                    ),
                                     Text(
                                       widget.time!,
                                       style: TextStyle(

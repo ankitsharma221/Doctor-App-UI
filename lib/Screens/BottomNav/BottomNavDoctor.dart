@@ -1,29 +1,27 @@
 import 'package:apiero_medica/Constants/Constants.dart';
-import 'package:apiero_medica/Screens/Appointment/AppointmentScreen.dart';
-import 'package:apiero_medica/Screens/Appointment/BookAppointment.dart';
 import 'package:apiero_medica/Screens/ArticlesScreen/ArticlesScreen.dart';
-// ignore: unused_import
-import 'package:apiero_medica/Screens/FavoriteDoctor/FavoriteDoctor.dart';
-import 'package:apiero_medica/Screens/HomeScreen/HomeScreen.dart';
-import 'package:apiero_medica/Screens/ProfileScreen/ProfileScreen.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/ProfileScreen/ProfileScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unicons/unicons.dart';
+import '../DoctorsScreens/DoctorHomeScreen/DoctorHome.dart';
+import '../PaitentsScrens/Appointment/AppointmentInfo.dart';
+import '../PaitentsScrens/Appointment/AppointmentScreen.dart';
+import '../PaitentsScrens/HomeScreenPaitents/HomeScreenPaitents.dart';
 
-import '../Appointment/AppointmentInfo.dart';
-
-class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+class BottomNavDoctors extends StatefulWidget {
+  const BottomNavDoctors({super.key});
   static String id = 'BottomNav';
 
   @override
-  State<BottomNav> createState() => _BottomNavState();
+  State<BottomNavDoctors> createState() => _BottomNavDoctorsState();
 }
 
-class _BottomNavState extends State<BottomNav> {
+class _BottomNavDoctorsState extends State<BottomNavDoctors> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    HomeScreen(),
+    HomeScreenDoctor(),
     AppointmentScreen(),
     AppointmentInfo(),
     ArticlesScreen(),

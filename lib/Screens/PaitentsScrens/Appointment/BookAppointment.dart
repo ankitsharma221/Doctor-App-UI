@@ -1,5 +1,4 @@
 import 'package:apiero_medica/Constants/Constants.dart';
-import 'package:apiero_medica/Screens/BottomNav/BottomNav.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +6,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:time_range/time_range.dart';
 
-import '../../Utils/Dialog.dart';
+import '../../../Utils/Dialog.dart';
+import '../../BottomNav/BottomNavPaitents.dart';
 
 class BookAppointment extends StatefulWidget {
   const BookAppointment({super.key});
@@ -272,7 +272,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => BottomNav(),
+                              builder: (context) => BottomNavPaitents(),
                             ),
                           );
                         },

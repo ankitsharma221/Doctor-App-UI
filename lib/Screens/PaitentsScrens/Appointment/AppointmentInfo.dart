@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../Constants/Constants.dart';
+import '../../../Constants/Constants.dart';
 import 'BookAppointment.dart';
 
 class AppointmentInfo extends StatefulWidget {

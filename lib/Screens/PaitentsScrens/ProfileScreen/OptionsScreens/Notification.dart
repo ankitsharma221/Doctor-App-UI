@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../Constants/Constants.dart';
+import '../../../../Constants/Constants.dart';
 
 class EditNotifications extends StatefulWidget {
   const EditNotifications({super.key});

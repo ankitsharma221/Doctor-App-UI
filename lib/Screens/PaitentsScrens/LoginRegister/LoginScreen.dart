@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 
-import '../BottomNav/BottomNavPaitents.dart';
+import '../../BottomNav/BottomNavPaitents.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

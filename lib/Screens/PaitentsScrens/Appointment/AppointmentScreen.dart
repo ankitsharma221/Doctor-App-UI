@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../Utils/DoctorCard.dart';
-import '../BottomNav/BottomNav.dart';
+import '../../../Utils/DoctorCard.dart';
 
 class AppointmentScreen extends StatefulWidget {
   const AppointmentScreen({super.key});

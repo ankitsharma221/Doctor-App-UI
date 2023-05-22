@@ -1,9 +1,10 @@
-import 'package:apiero_medica/Screens/bottomNav/BottomNav.dart';
+import 'package:apiero_medica/Screens/BottomNav/BottomNavDoctor.dart';
 import 'package:apiero_medica/Utils/Dialog.dart';
 import 'package:apiero_medica/Utils/DoctorCard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Screens/BottomNav/BottomNavPaitents.dart';
 import 'Screens/OnboardingScreen/Onboarding.dart';
 import 'Utils/Search.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Splash(),
+        home: BottomNavDoctors(),
       ),
     );
   }
