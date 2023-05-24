@@ -9,11 +9,24 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:apiero_medica/Constants/Constants.dart';
 import '../../../Utils/Search.dart';
 import '../../BottomNav/BottomNavPaitents.dart';
+import '../../ChatBot/ChatBot.dart';
+import '../../PaitentsScrens/HomeScreenPaitents/HomeScreenPaitents.dart';
 import '../../PaitentsScrens/NotificationScreen/NotificationScreen.dart';
 
 class HomeScreenDoctor extends StatefulWidget {
-  const HomeScreenDoctor({super.key});
-
+  const HomeScreenDoctor({
+    Key? key,
+    this.name,
+    this.image,
+    this.date,
+    this.time,
+    this.status,
+    this.color,
+    this.button,
+    this.button2,
+  }) : super(key: key);
+  final String? name, date, time, status, button, button2, image;
+  final Color? color;
   @override
   State<HomeScreenDoctor> createState() => _HomeScreenDoctorState();
 }
@@ -48,7 +61,14 @@ class _HomeScreenDoctorState extends State<HomeScreenDoctor> {
     return Scaffold(
       backgroundColor: Constants().Bg,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HelperBot(),
+            ),
+          );
+        },
         child: Lottie.asset(
           'assets/Lottie/chat-bot.json',
           repeat: true,
@@ -60,6 +80,7 @@ class _HomeScreenDoctorState extends State<HomeScreenDoctor> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
@@ -171,6 +192,16 @@ class _HomeScreenDoctorState extends State<HomeScreenDoctor> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                ),
+                child: CardSlider(),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
               ListTile(
                 leading: Padding(
                   padding: const EdgeInsets.only(left: 5),
@@ -197,14 +228,245 @@ class _HomeScreenDoctorState extends State<HomeScreenDoctor> {
                   ),
                 ),
               ),
-              AppointmentCardToday(
-                name: 'Dr. Stefeni Albert',
-                date: 'Mon, 18 May',
-                time: '8.00 - 9.00 AM',
-                status: 'Cancelled',
-                color: Constants().TextColorGrey,
-                button: 'Book Again',
-                button2: 'Review',
+              ListView.builder(
+                itemCount: 10,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Card(
+                      color: Constants().White,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/Images/doctor2.jpg',
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.02,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Dr Andrew Smith',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontFamily: 'Urbanist',
+                                        color: Constants().TextColorBlack,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.01,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '12:00 PM',
+                                              style: TextStyle(
+                                                fontFamily: 'Urbanist',
+                                                color:
+                                                    Constants().TextColorGrey,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.05,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.01,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundColor:
+                                                Constants().ContainerBg2,
+                                            child: FaIcon(
+                                              FontAwesomeIcons.solidMessage,
+                                              color: Constants().Button,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.05,
+                                        ),
+                                        GestureDetector(
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundColor:
+                                                Constants().ContainerBg2,
+                                            child: FaIcon(
+                                              FontAwesomeIcons.phone,
+                                              color: Constants().Button,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.05,
+                                        ),
+                                        GestureDetector(
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundColor:
+                                                Constants().ContainerBg2,
+                                            child: FaIcon(
+                                              FontAwesomeIcons.video,
+                                              color: Constants().Button,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.02,
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              color: Constants().TextColorGrey,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.05,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const BottomNavPaitents(),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: Constants().White,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      side: BorderSide(
+                                        color: Constants().Button,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                        color: Constants().Button,
+                                        fontFamily: 'Urbanist',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.05,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const BottomNavPaitents(),
+                                        ),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      elevation: 0,
+                                      backgroundColor: Constants().Button,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'Join',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Urbanist',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:apiero_medica/Constants/Constants.dart';
 import '../../../Utils/Search.dart';
+import '../../ChatBot/ChatBot.dart';
 import '../NotificationScreen/NotificationScreen.dart';
 
 class HomeScreenPaitent extends StatefulWidget {
@@ -44,17 +45,26 @@ class _HomeScreenPaitentState extends State<HomeScreenPaitent> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants().Bg,
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   child: Lottie.asset(
-      //     'assets/Lottie/chat-bot.json',
-      //     repeat: true,
-      //     height: 100,
-      //     width: 100,
-      //     alignment: Alignment.center,
-      //   ),
-      //   backgroundColor: Constants().Button,
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HelperBot(),
+            ),
+          );
+        },
+        child: Lottie.asset(
+          'assets/Lottie/chat-bot.json',
+          repeat: true,
+          reverse: true,
+          animate: true,
+          height: 100,
+          width: 100,
+          alignment: Alignment.center,
+        ),
+        backgroundColor: Constants().Button,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

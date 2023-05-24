@@ -12,14 +12,26 @@ class _EditNotificationsState extends State<EditNotifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Constants().Bg,
       appBar: AppBar(
-        leading: BackButton(
-          color: Constants().TextColorBlack,
+        elevation: 0.0,
+        backgroundColor: Constants().Bg,
+        title: Text(
+          'Noti',
+          style: TextStyle(
+            color: Constants().TextColorBlack,
+            fontFamily: 'Urbanist',
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
+          icon: const Icon(Icons.arrow_back),
+          color: Constants().TextColorBlack,
         ),
-        title: Text("EditNotificationsfication"),
       ),
       body: SafeArea(
         child: Padding(

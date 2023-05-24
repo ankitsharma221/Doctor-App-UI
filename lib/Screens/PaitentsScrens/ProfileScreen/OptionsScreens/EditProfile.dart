@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import '../../../../Constants/Constants.dart';
 
 class Edit extends StatefulWidget {
@@ -10,14 +9,16 @@ class Edit extends StatefulWidget {
   State<Edit> createState() => _EditState();
 }
 
+String dropdownValue = 'Male';
+
 class _EditState extends State<Edit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants().Bg,
+      backgroundColor: Constants().White,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Constants().Bg,
+        backgroundColor: Constants().White,
         title: Text(
           'Edit Profile',
           style: TextStyle(
@@ -28,11 +29,12 @@ class _EditState extends State<Edit> {
           ),
         ),
         leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back),
-            color: Constants().TextColorBlack),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
+          color: Constants().TextColorBlack,
+        ),
       ),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -46,7 +48,7 @@ class _EditState extends State<Edit> {
                   height: MediaQuery.of(context).size.height * 0.08,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: Constants().Bg,
+                    color: Constants().Con,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
@@ -201,6 +203,7 @@ class _EditState extends State<Edit> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Gmail",
+                      suffixIcon: Icon(Icons.email),
                       hintStyle: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Constants().TextColorBlack,
@@ -237,7 +240,8 @@ class _EditState extends State<Edit> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "Country",
+                      hintText: "Mobile Number",
+                      suffixIcon: Icon(Icons.phone),
                       hintStyle: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Constants().TextColorBlack,
@@ -272,27 +276,45 @@ class _EditState extends State<Edit> {
                     color: Constants().Bg,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Gender",
-                      hintStyle: TextStyle(
+                  child: Center(
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      padding: EdgeInsets.only(left: 20),
+                      icon: Icon(Icons.arrow_drop_down),
+                      iconSize: 42,
+                      underline: SizedBox(),
+                      alignment: Alignment.centerLeft,
+
+                      style: TextStyle(
                         fontFamily: 'Urbanist',
                         color: Constants().TextColorBlack,
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Constants().White,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Constants().White,
-                        ),
-                      ),
+                      // Step 3.
+                      value: dropdownValue,
+                      // Step 4.
+                      items: <String>['Male', 'Female', 'Other']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: TextStyle(
+                              fontFamily: 'Urbanist',
+                              color: Constants().TextColorBlack,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                      // Step 5.
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
                     ),
                   ),
                 ),
