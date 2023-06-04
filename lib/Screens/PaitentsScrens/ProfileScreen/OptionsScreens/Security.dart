@@ -12,112 +12,108 @@ class _SecureState extends State<Secure> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Constants().Bg,
       appBar: AppBar(
-        leading: BackButton(
-          color: Constants().TextColorBlack,
+        backgroundColor: Constants().Bg,
+        elevation: 0.0,
+        title: Text(
+          'Security',
+          style: TextStyle(
+            color: Constants().TextColorBlack,
+            fontFamily: 'Urbanist',
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
+          icon: const Icon(Icons.arrow_back),
+          color: Constants().TextColorBlack,
         ),
-        title: Text("Security"),
       ),
       body: SafeArea(
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Tile(),
-                SizedBox(
-                  height: 18,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      // backgroundColor: Colors.blue.shade100;
-                      backgroundColor: MaterialStateProperty.all(
-                        Constants().ContainerBg2,
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'Change Pin',
-                      style: const TextStyle(
-                        color: Colors.blue,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                ListTile(
+                  title: Text(
+                    'Change Password',
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontFamily: 'Urbanist',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Constants().TextColorBlack,
+                  ),
+                  onTap: () {},
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.07,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      // backgroundColor: Colors.blue.shade100;
-                      backgroundColor: MaterialStateProperty.all(
-                        Constants().ContainerBg2,
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'Change Password',
-                      style: const TextStyle(
-                        color: Colors.blue,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                ListTile(
+                  title: Text(
+                    'Change Phone Number',
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontFamily: 'Urbanist',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Constants().TextColorBlack,
+                  ),
+                  onTap: () {},
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListTile(
+                  title: Text(
+                    'Change Email',
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontFamily: 'Urbanist',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Constants().TextColorBlack,
+                  ),
+                  onTap: () {},
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListTile(
+                  title: Text(
+                    'Change Security Question',
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontFamily: 'Urbanist',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Constants().TextColorBlack,
+                  ),
+                  onTap: () {},
                 ),
               ],
             )),
       ),
-    );
-  }
-}
-
-class Tile extends StatefulWidget {
-  const Tile({super.key});
-
-  @override
-  State<Tile> createState() => _TileState();
-}
-
-class _TileState extends State<Tile> {
-  List<String> data = [
-    'Remember me',
-    "Face id",
-    "Biometric id",
-    "Google Authenticator"
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: 4,
-      itemBuilder: (BuildContext context, index) {
-        return ListTile(
-          title: Text(data[index]),
-          trailing: IconButton(onPressed: () {}, icon: Icon(Icons.zoom_in)),
-        );
-      },
     );
   }
 }

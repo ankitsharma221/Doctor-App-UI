@@ -133,7 +133,7 @@ class _HelperBotState extends State<HelperBot> {
                     color: Constants().Button,
                     width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                   color: Constants().White,
                 ),
                 child: Padding(

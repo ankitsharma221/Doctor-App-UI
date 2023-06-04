@@ -1,4 +1,5 @@
 import 'package:apiero_medica/Screens/BottomNav/BottomNavDoctor.dart';
+import 'package:apiero_medica/Screens/PaitentsScrens/Appointment/AppointmentInfo.dart';
 import 'package:apiero_medica/Utils/Dialog.dart';
 import 'package:apiero_medica/Utils/DoctorCard.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+        home: AppointmentInfo(),
       ),
     );
   }

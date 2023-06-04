@@ -1,13 +1,7 @@
 import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
-import 'package:time_range/time_range.dart';
-
-import '../../../Utils/Dialog.dart';
-import '../../BottomNav/BottomNavPaitents.dart';
 
 class BookAppointment extends StatefulWidget {
   const BookAppointment({super.key});
@@ -261,24 +255,30 @@ class _BookAppointmentState extends State<BookAppointment> {
                   child: ElevatedButton(
                     onPressed: //if page is not last page, go to next page
                         () {
-                      Provider.of<DialogBox>(context, listen: false).dialog(
+                      // Provider.of<DialogBox>(context, listen: false).dialog(
+                      //   context,
+                      //   "assets/Images/Booked.png",
+                      //   "Congratulations!",
+                      //   "Your appointment has been booked successfully.",
+                      //   "View Appointment",
+                      //   "Cancel",
+                      //   () {
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => BottomNavPaitents(),
+                      //       ),
+                      //     );
+                      //   },
+                      //   () {
+                      //     Navigator.pop(context);
+                      //   },
+                      // );
+                      Navigator.push(
                         context,
-                        "assets/Images/Booked.png",
-                        "Congratulations!",
-                        "Your appointment has been booked successfully.",
-                        "View Appointment",
-                        "Cancel",
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BottomNavPaitents(),
-                            ),
-                          );
-                        },
-                        () {
-                          Navigator.pop(context);
-                        },
+                        MaterialPageRoute(
+                          builder: (context) => PaitentsDetails(),
+                        ),
                       );
                     },
                     style: ButtonStyle(
@@ -297,6 +297,112 @@ class _BookAppointmentState extends State<BookAppointment> {
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PaitentsDetails extends StatefulWidget {
+  const PaitentsDetails({super.key});
+
+  @override
+  State<PaitentsDetails> createState() => _PaitentsDetailsState();
+}
+
+class _PaitentsDetailsState extends State<PaitentsDetails> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Constants().White,
+      appBar: AppBar(
+        backgroundColor: Constants().White,
+        elevation: 0,
+        title: const Text(
+          "Paitents Details",
+          style: TextStyle(
+            fontFamily: 'Urbanist',
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        centerTitle: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text(
+                    "Full Name",
+                    style: TextStyle(
+                      fontFamily: 'Urbanist',
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Constants().Bg,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Full Name",
+                        hintStyle: TextStyle(
+                          fontFamily: 'Urbanist',
+                          color: Constants().TextColorBlack,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Constants().White,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Constants().White,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "Gender",
+                    style: TextStyle(
+                      fontFamily: 'Urbanist',
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),

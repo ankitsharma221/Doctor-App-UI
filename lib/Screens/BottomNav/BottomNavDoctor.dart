@@ -1,5 +1,6 @@
 import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:apiero_medica/Screens/ArticlesScreen/ArticlesScreen.dart';
+import 'package:apiero_medica/Screens/DoctorsScreens/DoctorHistoryScreen/DocHistoryScreen.dart';
 import 'package:apiero_medica/Screens/PaitentsScrens/ProfileScreen/ProfileScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _BottomNavDoctorsState extends State<BottomNavDoctors> {
   final List<Widget> _children = [
     HomeScreenDoctor(),
     AppointmentScreen(),
-    AppointmentInfo(),
+    DoctorHistoryScreen(),
     ArticlesScreen(),
     ProfileScreen(),
   ];

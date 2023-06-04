@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import '../../../../Constants/Constants.dart';
 
 class language extends StatefulWidget {
@@ -12,22 +10,24 @@ class language extends StatefulWidget {
 
 class _languageState extends State<language> {
   List<String> title = [
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
-    "Hindi",
+    'English',
+    'Hindi',
+    'Marathi',
+    'Gujarati',
+    'Bengali',
+    'Tamil',
+    'Telugu',
+    'Kannada',
+    'Malayalam',
+    'Punjabi',
+    'Odia',
+    'Assamese',
+    'Maithili',
+    'Urdu',
+    'Sanskrit',
   ];
+
+  int currentValue = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,12 @@ class _languageState extends State<language> {
         backgroundColor: Constants().Bg,
         title: Text(
           'Language',
-          style: TextStyle(color: Constants().TextColorBlack),
+          style: TextStyle(
+            color: Constants().TextColorBlack,
+            fontFamily: 'Urbanist',
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         automaticallyImplyLeading: true,
         leading: IconButton(
@@ -56,10 +61,23 @@ class _languageState extends State<language> {
               shrinkWrap: true,
               itemBuilder: (BuildContext context, index) {
                 return ListTile(
-                  title: Text(title[index]),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.abc),
+                  title: Text(
+                    title[index],
+                    style: TextStyle(
+                      color: Constants().TextColorBlack,
+                      fontFamily: 'Urbanist',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  trailing: Radio(
+                    value: index,
+                    groupValue: currentValue,
+                    onChanged: (value) {
+                      setState(() {
+                        currentValue = value as int;
+                      });
+                    },
                   ),
                 );
               },

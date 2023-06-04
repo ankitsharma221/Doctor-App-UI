@@ -1,6 +1,5 @@
 import 'package:apiero_medica/Constants/Constants.dart';
 import 'package:apiero_medica/Screens/ArticlesScreen/AllArticles.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 import 'Models/article_details_screen.dart';
