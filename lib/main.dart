@@ -1,5 +1,6 @@
 import 'package:apiero_medica/Screens/BottomNav/BottomNavDoctor.dart';
 import 'package:apiero_medica/Screens/DoctorReview/review_page1.dart';
+import 'package:apiero_medica/Screens/LoginRegister/LoginScreen.dart';
 import 'package:apiero_medica/Screens/PaitentsScrens/Appointment/AppointmentInfo.dart';
 import 'package:apiero_medica/Utils/Dialog.dart';
 import 'package:apiero_medica/Utils/DoctorCard.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: DoctorReview(),
+        home: OnboardingScreen(),
       ),
     );
   }
