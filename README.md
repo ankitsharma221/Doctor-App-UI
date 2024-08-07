@@ -26,6 +26,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/1764eaa4-edc8-4b37-8017-85d974cacb01" alt="Screenshot 13" width="150"/>
   <img src="https://github.com/user-attachments/assets/0943ed34-42dc-4ea9-a7e4-c3df5e5f5037" alt="Screenshot 14" width="150"/>
+  
 </p>
 
 ![Screenshot 2024-08-07 093334](https://github.com/user-attachments/assets/171d0516-3026-446a-b523-023c3b073c2b)
