@@ -1,8 +1,6 @@
-// ignore_for_file: Color ant_identifier_names, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
-//Constants Colors
+
 class Constants {
   Color Bg = const Color(0xFFf9f9f9);
   Color Button = const Color(0xFF246bfd);
